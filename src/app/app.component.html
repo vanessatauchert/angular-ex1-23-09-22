@@ -1,0 +1,44 @@
+<hello name="{{ name }}"></hello>
+<p>Selecione uma opção</p>
+
+<div class="form-check">
+  <input type="radio" [(ngModel)]="option" [value]="1" />Juros Simples
+  <input type="radio" [(ngModel)]="option" [value]="2" />Juros Compostos
+</div>
+
+<h2>Opção: {{ option }}</h2>
+<hr />
+
+<div ngif='option == "1"'>
+  Opção 1
+
+  <h2>Juros Simples</h2>
+  <div>
+    <p>Digite o Capital:</p>
+    <input [(ngModel)]="n1" type="number" />
+    <p [(ngModel)]="n2" type="number"></p>
+    <p>Juros fixo de 8%</p>
+    <p>Digite o periodo:</p>
+    <input [(ngModel)]="n3" type="number" />
+
+    {{ n1 }} * {{ n2 }}(taxa) * {{ n3 }} = {{ getSum() }}
+  </div>
+</div>
+
+<hr />
+<div ngif='option == "2"'>
+  Opção 2
+
+  <h2>Juros Compostos</h2>
+  <div>
+    <p>Digite o Capital:</p>
+    <input [(ngModel)]="n4" type="number" />
+    <p [(ngModel)]="n2" type="number"></p>
+    <p>Juros fixo de 8%</p>
+    <p [(ngModel)]="n6" type="number"></p>
+    <p>Digite o periodo:</p>
+    <input [(ngModel)]="n7" type="number" />
+
+    {{ n4 }} * ({{ n2 }} + {{ n6 }}(taxa)) * {{ n7 }} = {{ getSum() }}
+  </div>
+</div>
